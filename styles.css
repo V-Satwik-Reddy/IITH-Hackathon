@@ -1,0 +1,174 @@
+/* General Styles */
+.navbar .dropdown {
+  margin-left: 10px; /* Add space between the cart and profile */
+}
+
+body {
+  background-color: #fff; /* White background */
+  color: #000; /* Black text */
+  font-family: 'Roboto', sans-serif; /* Use Roboto font */
+  margin: 0; /* Remove default margins */
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #fff; /* White navbar */
+  border-bottom: 2px solid #000; /* Black bottom border */
+}
+
+.nav-link {
+  color: #000; /* Black link text */
+}
+
+.nav-link:hover {
+  color: #555; /* Dark grey on hover */
+}
+
+.navbar-brand {
+  color: #000; /* Black brand text */
+}
+
+/* Header Styles */
+.bg-header {
+  background-color: #000; /* Black background for header */
+}
+
+.py-5 {
+  padding-top: 5rem; /* Padding for sections */
+  padding-bottom: 5rem;
+}
+
+.text-white {
+  color: #fff; /* White text */
+}
+
+.text-white-50 {
+  color: rgba(255, 255, 255, 0.5); /* Slightly transparent white */
+}
+
+/* Events and Movies Section Styles */
+.card {
+  background-color: #fff; /* White card background */
+  border: 2px solid #000; /* Black border for cards */
+}
+
+.card img {
+  width: 100%; /* Full width images */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.card-footer {
+  background-color: transparent; /* Transparent footer for cards */
+}
+
+.fun-button {
+  color: #000; /* Black text for buttons */
+  border: 2px solid #000; /* Black border for buttons */
+}
+
+.fun-button:hover {
+  background-color: transparent; /* No background color on hover */
+  color: #555; /* Dark grey text on hover */
+}
+
+/* Table Styles */
+.table {
+  background-color: #fff; /* White background for table */
+}
+
+.table-dark th {
+  background-color: #000; /* Black background for header */
+  color: #fff; /* White text for header */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa; /* Light grey background on hover */
+}
+
+/* About Section Styles */
+#about {
+  background-color: #000000; /* Black background for About */
+}
+
+/* Contact Form Styles */
+.form-label {
+  color: #ffffff; /* Black text for labels */
+}
+
+.form-control {
+  border: 2px solid #000; /* Black border for inputs */
+}
+
+.form-control:focus {
+  border-color: #000; /* Maintain black border on focus */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #000; /* Black footer */
+  color: #fff; /* White text */
+  text-align: center; /* Center footer text */
+  padding: 1rem; /* Padding for footer */
+}
+
+.event-card {
+  min-height: 500px; /* Set the minimum height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-card img {
+  height: 400px; /* Adjust the height of the image */
+  object-fit: cover; /* Ensures the image covers the entire space without distortion */
+}
+
+.event-card .card-body {
+  flex-grow: 1; /* Ensures that the body takes up remaining space */
+}
+
+.event-card .card-footer {
+  margin-top: auto; /* Push the footer to the bottom of the card */
+}
+
+/* Removed Custom Cursor Styles */
+/* 
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, background-color 0.25s ease;
+    z-index: 9999;
+}
+
+.cursor--active {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%) scale(1.5);
+}
+*/
+
+/* Removed Mascot Styles */
+/*
+.mascot {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 30%; 
+    max-width: 150px; 
+    height: auto;
+    pointer-events: none; 
+    transform: translate(-50%, -50%) scale(0.3); 
+    transition: transform 0.1s ease; 
+    z-index: 9998; 
+}
+*/
+
+/* QR Code Modal Styles (Optional) */
+#qrCodeImage {
+    max-width: 100%;
+    height: auto;
+}

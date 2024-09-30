@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        /* Reset styles for margin, padding, and box sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white; /* Changed to white */
+            font-family: Arial, sans-serif; /* Font family */
+        }
+
+        .container {
+            background-color: white; /* Set background color to white */
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            width: 100%;
+            max-width: 400px; /* Max width for responsiveness */
+            text-align: center; /* Center text */
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            color: black; /* Heading color */
+        }
+
+        .input-group {
+            margin-bottom: 1rem; /* Space between input fields */
+            text-align: left; /* Align labels to the left */
+        }
+
+        .input-group label {
+            display: block; /* Display label as block */
+            margin-bottom: 0.5rem; /* Space between label and input */
+            font-weight: bold; /* Bold text for label */
+            color: black; /* Color for label */
+        }
+
+        .input-group input {
+            width: 100%; /* Full width input */
+            padding: 0.5rem; /* Padding for input */
+            border: 1px solid #ddd; /* Light border */
+            border-radius: 4px; /* Rounded corners */
+            font-size: 1rem; /* Font size */
+        }
+
+        button {
+            background-color: black; /* Button background color set to black */
+            color: white; /* Button text color set to white */
+            border: none; /* No border */
+            padding: 0.7rem 1.5rem; /* Padding for button */
+            border-radius: 4px; /* Rounded corners */
+            font-size: 1rem; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Transition for hover effect */
+        }
+
+        button:hover {
+            background-color: #555; /* Darker color on hover */
+        }
+
+        .login-link {
+            margin-top: 1rem; /* Space above the link */
+        }
+
+        .login-link a {
+            color: black; /* Link color set to black */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .login-link a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signup-form" onsubmit="handleSignup(event)">
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>     
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p class="login-link">Already registered? <a href="login.html">Login</a></p>
+    </div>
+    <script>
+        function handleSignup(event) {
+            event.preventDefault(); // Prevent the default form submission
+        
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+        
+            if (!email || !password) {
+                alert("Please fill in both fields");
+                return;
+            }
+        
+            fetch('http://localhost:3000/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })  // Send data to the backend
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text(); // Convert the response to text
+            })
+            .then(data => {
+                alert(data);  // Display success or error message
+            })
+            .then(data => {
+                
+                alert("Registared Successfully");// Redirect to the dashboard page after successful login
+                window.location.href = 'index2w.html'; // Replace with your desired page
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

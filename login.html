@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: white; /* Changed to white */
+            height: 100vh;
+            color: black; /* Default text color set to black */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .loginbox {
+            background-color: white; /* Set background color to white */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: black; /* Ensure header is black */
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: black; /* Label color set to black */
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc; /* Use a light grey border */
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: black; /* Button background color set to black */
+            color: white; /* Button text color set to white */
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #555; /* Darker shade for hover effect */
+        }
+
+        .error-message {
+            color: red; /* Keep error message red for visibility */
+            margin-bottom: 15px;
+        }
+
+        .message {
+            margin-top: 20px;
+        }
+
+        .message a {
+            color: black; /* Link color set to black */
+            text-decoration: none;
+        }
+
+        .message a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loginbox">
+            <h2>Login to Your Account</h2>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label for="email">Enter Your Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Enter Your Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                </div>
+                <div class="error-message" id="error-message"></div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div class="message">
+                Don't Have an Account? <a href="signup.html">Signup</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+        
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+        
+            // Validate input
+            if (!email || !password) {
+                alert("Please fill in both fields");
+                return;
+            }
+        
+            fetch('http://localhost:3000/login', { // Update the endpoint to /login
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password }) // Send data to the backend
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Login failed'); // Trigger the catch block if login failed
+                }
+                return response.text(); // Get the response text if login is successful
+            })
+            .then(data => {
+                // Redirect to the dashboard page after successful login
+                window.location.href = 'index2.html'; // Replace with your desired page
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Invalid email or password. Please try again.'); // Show an alert for failed login
+            });
+        }
+    </script>
+</body>
+</html>
